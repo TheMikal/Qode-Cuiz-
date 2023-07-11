@@ -1,9 +1,28 @@
+:root {
+    background-color: antiquewhite;
+    font-family: ui-monospace;
+
+}
+
 .timeBar {
     border-bottom: 1px solid purple;
 }
 
+#timerEl {
+    float: right;
+    border: 1px solid gray;
+    padding: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: large;
+}
+
 .gameCont {
 
+}
+
+.startBtn {
+    display: flex;
 }
 
 .areYouSmart {
