@@ -8,7 +8,7 @@ Qode Cuiz is a short programming based quiz webpage. It is able to save your hig
 
 To use the app all you have to do is go to the deployments and launch the latest one
 
-![deployments](/assets/deployments.png)
+![deployments](https://github.com/TheMikal/Qode-Cuiz-/assets/131578548/0997fe4c-6a0a-4252-b8b2-d8d387f2670a)
 
 Or you can click the link below! 
 ## Link to the Quiz
