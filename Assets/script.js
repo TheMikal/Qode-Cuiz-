@@ -60,6 +60,7 @@ const a3 = document.getElementById('a3');
 const a4 = document.getElementById('a4');
 const startBtn = document.querySelector(".startBtn");
 const areYouSmart = document.querySelector(".areYouSmart");
+//  a variable that lets us dynamically update the page based on the current question
 let cq = 0;
 let Score = 0
 // for the timer
@@ -68,7 +69,7 @@ let gameStart = false;
 console.log(gameStart);
 
 // Event listener for button click to start 
-gameCont.addEventListener('click',function (event) {
+startBtn.addEventListener('click',function (event) {
     if (event.target.classList.contains('startBtn')){
         event.stopPropagation();
         startGame();
@@ -79,6 +80,7 @@ gameCont.addEventListener('click',function (event) {
 function startGame() {
     let gameStart = true; // Change the constant value to true
     let currentQuestion = 1
+    let = 0;
     console.log(currentQuestion)
     console.log(gameStart)
     // hides the start button when quiz begins
@@ -124,7 +126,7 @@ function startGame() {
         endGame();
     }
     }, 1000); // Update the timer every 
-    
+    // here the cq variable comes into use
     question.textContent = questions[cq].title
     a1.textContent = questions[cq].answers[0]
     a2.textContent = questions[cq].answers[1]
@@ -169,7 +171,7 @@ function endGame() {
     areYouSmart.style = "none";
     choices.style = "none";
     startBtn.style = "block";
+    startBtn.textContent = "Try Again?"
     gameCont.textContent = `Quiz over! Your final score was ${Score}!`
-    let cq = 0;
-    localStorage.setItem('highScore', )
-}
+    localStorage.setItem('highScore', Score.toString());
+};
