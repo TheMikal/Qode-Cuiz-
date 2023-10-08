@@ -1,9 +1,3 @@
-/* pseudo code:
-i need a bar at the top that displays time remaining, and have a button to show saved high-scores from local storage
-in the main body i need a button that when pressed starts the quiz and dynamically displays the question with possible answers underneath as buttons. 
-at the bottom i need a bar that displays whether the answer is right or wrong. when answered wrong it subtracts time from the timer
-when finished, either all the questions or running out of time, the quiz takes the remaining time if any and saves it in local storage as the score, along with the provided initials of the test taker */
-
 /* 
 Questions skeleton array to create multiple questions quickly with copy and paste
 {
@@ -49,6 +43,7 @@ const questions = [
         correctAnswer:"stopPropagation()"
     }
 ];
+
 console.log(questions[0])
 console.log(questions[0].answers)
 // setting the section parents as variables to use later
@@ -65,8 +60,10 @@ const a3 = document.getElementById('a3');
 const a4 = document.getElementById('a4');
 const startBtn = document.querySelector(".startBtn");
 const areYouSmart = document.querySelector(".areYouSmart");
+let cq = 0;
+let Score = 0
 // for the timer
-const timeRemaining = 30; // Timer duration in seconds
+let timeRemaining = 30; // Timer duration in seconds
 let gameStart = false;
 console.log(gameStart);
 
@@ -78,15 +75,11 @@ gameCont.addEventListener('click',function (event) {
     }
 });
 
-// event listener for the correct answer
-choices.addEventListener("click", function (event) {
-    if (event.target.textContent === questions.correctAnswer)
-    event.stopPropagation();
-    nextQuestion();
-});
 
 function startGame() {
     let gameStart = true; // Change the constant value to true
+    let currentQuestion = 1
+    console.log(currentQuestion)
     console.log(gameStart)
     // hides the start button when quiz begins
     startBtn.style.display = "none"
@@ -128,20 +121,61 @@ function startGame() {
         // changes the text of the start button and shows it again
         startBtn.textContent = "Try Again!";
         startBtn.style.display = "flex";
+        endGame();
     }
     }, 1000); // Update the timer every 
     
-    question.textContent = questions[0].title
-    a1.textContent = questions[0].answers[0]
-    a2.textContent = questions[0].answers[1]
-    a3.textContent = questions[0].answers[2]
-    a4.textContent = questions[0].answers[3]
+    question.textContent = questions[cq].title
+    a1.textContent = questions[cq].answers[0]
+    a2.textContent = questions[cq].answers[1]
+    a3.textContent = questions[cq].answers[2]
+    a4.textContent = questions[cq].answers[3]
 };
 console.log(questions.correctAnswer)
-function bigSadYouAreWrong() {
-/* remainingTime -= # to remove time from timer */
-};
+
+// event listener for the chosen answer
+choices.addEventListener("click", function (event) {
+    const userChoice = event.target.textContent
+    console.log(userChoice);
+    event.stopPropagation();
+
+    if (userChoice !== questions[cq].correctAnswer) {
+        timeRemaining -= 5;
+        areYouSmart.textContent = "That's wrong!"
+        nextQuestion();
+    } else {
+        areYouSmart.textContent = "That's Right!"
+        Score ++;
+        nextQuestion();
+        
+    }
+});
+console.log(Score)
 
 function nextQuestion() {
-
+    if (cq <= 4){
+    cq ++
+    question.textContent = questions[cq].title
+    a1.textContent = questions[cq].answers[0]
+    a2.textContent = questions[cq].answers[1]
+    a3.textContent = questions[cq].answers[2]
+    a4.textContent = questions[cq].answers[3]
+    } else {
+        endGame();
+    }
 };
+
+function endGame() {
+    areYouSmart.style = "none";
+    choices.style = "none";
+    startBtn.style = "block";
+    gameCont.textContent = `Quiz over! Your final score was ${Score}!`
+    let cq = 0;
+    localStorage.setItem('highScore', )
+}
+
+
+function thing(question, answer1, answer2, answer3, answer4, correctAnswer) {
+    
+    
+}

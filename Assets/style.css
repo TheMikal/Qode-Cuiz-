@@ -1,16 +1,21 @@
 :root {
     background-color: antiquewhite;
-    font-family: ui-monospace;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+}
+#smartyList p {
+    color: blueviolet;
+    text-align: left;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 .timeBar {
-    border-bottom: 1px solid purple;
+    margin: 20px;
 }
 
 #timerEl {
     float: right;
-    border: 1px solid gray;
     padding: 2px;
     font-weight: bolder;
     text-transform: uppercase;
@@ -39,6 +44,10 @@
     width: 80px;
     margin: 10px auto;
     padding: 10px;
+}
+
+#scoreBox {
+    display: none;
 }
 
 .areYouSmart {
