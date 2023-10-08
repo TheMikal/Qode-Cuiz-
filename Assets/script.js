@@ -173,9 +173,3 @@ function endGame() {
     let cq = 0;
     localStorage.setItem('highScore', )
 }
-
-
-function thing(question, answer1, answer2, answer3, answer4, correctAnswer) {
-    
-    
-}
