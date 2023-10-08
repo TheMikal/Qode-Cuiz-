@@ -62,7 +62,8 @@ const startBtn = document.querySelector(".startBtn");
 const areYouSmart = document.querySelector(".areYouSmart");
 //  a variable that lets us dynamically update the page based on the current question
 let cq = 0;
-let Score = 0
+let Score = 0;
+const highScoreStored = localStorage.getItem('highScoreStored')
 // for the timer
 let timeRemaining = 30; // Timer duration in seconds
 let gameStart = false;
@@ -76,6 +77,10 @@ startBtn.addEventListener('click',function (event) {
     }
 });
 
+smarties.addEventListener('click', function (event) {
+    gameCont.textContent = `Your High Score is ${highScoreStored}! Refresh the page to try again for a higher score!`;
+    startBtn.style = "none";
+});
 
 function startGame() {
     let gameStart = true; // Change the constant value to true
@@ -91,11 +96,11 @@ function startGame() {
 
     // Start the timer
     const timer = setInterval(function () {
-    remainingTime--;
-    timerEl.textContent = remainingTime;
+    timeRemaining--;
+    timerEl.textContent = timeRemaining;
 
     // Switch statement for different time messages
-    switch (remainingTime) {
+    switch (timeRemaining) {
         case 10:
             timerEl.textContent = 'Hurry up! Only 10 seconds left!';
             timerEl.style = "color: red"
@@ -110,11 +115,11 @@ function startGame() {
             break;
         default:
         // Display remaining time
-            timerEl.textContent = `${remainingTime} seconds remaining.`;
+            timerEl.textContent = `${timeRemaining} seconds remaining.`;
     }
 
     // Check if the timer has reached 0
-    if (remainingTime <= 0) {
+    if (timeRemaining <= 0) {
         clearInterval(timer); // Stop the timer
         let gameStart = false; // Reset the state to false
         console.log(gameStart);
@@ -172,6 +177,7 @@ function endGame() {
     choices.style = "none";
     startBtn.style = "block";
     startBtn.textContent = "Try Again?"
-    gameCont.textContent = `Quiz over! Your final score was ${Score}!`
-    localStorage.setItem('highScore', Score.toString());
+    const finalScore = Score + timeRemaining
+    gameCont.textContent = `Quiz over! Your final score was ${finalScore}!`
+    localStorage.setItem('highScoreStored', finalScore.toString());
 };
