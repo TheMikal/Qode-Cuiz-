@@ -12,3 +12,5 @@ To use the app all you have to do is go to the deployments and launch the latest
 
 Or you can click the link below! 
 ## Link to the Quiz
+
+- https://themikal.github.io/Qode-Cuiz-/
