@@ -1,7 +1,7 @@
 :root {
     background-color: antiquewhite;
     font-family: ui-monospace;
-
+    text-align: center;
 }
 
 .timeBar {
@@ -18,11 +18,27 @@
 }
 
 .gameCont {
-
+    display: flex;
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    flex-direction: column;
 }
 
+.questionHolder {
+    margin: 25px;
+}
+
+.answerHolder {
+    display: none;
+    justify-content: center;
+    margin: 10px;
+}
 .startBtn {
-    display: flex;
+    display: block;
+    width: 80px;
+    margin: 10px auto;
+    padding: 10px;
 }
 
 .areYouSmart {
